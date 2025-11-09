@@ -1,0 +1,35 @@
+{
+  "name": "@trust-escrow/jobs-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Background workers for deadlines, reminders, and auto-escalations. Consumes Helius webhooks; triggers notifications or safe finalize prep.",
+  "license": "MIT",
+  "author": "Artha Network",
+  "main": "src/worker.ts",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start:worker": "ts-node --transpile-only src/worker.ts",
+    "start:dev": "nodemon --watch src --ext ts --exec \"ts-node --transpile-only src/worker.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "bullmq": "^5.8.0",
+    "ioredis": "^5.4.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "nodemon": "^3.1.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
